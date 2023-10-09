@@ -53,10 +53,15 @@ const btn = document.getElementById("btn");
 let pets = [];
 btn.addEventListener("click", function (e) {
   e.preventDefault();
-  let z = petName.value;
-  z = new Pet(petName.value, ownerName.value, specie.value, breed.value);
+
+  let z = new Pet(petName.value, ownerName.value, specie.value, breed.value);
   pets.push(z);
   console.log(z);
+  const myList = document.getElementById("mylist");
+  let newLi = document.createElement("li");
+  newLi.innerText = `${z.petName}, ${z.ownerName}, ${z.species}, ${z.breed}`;
+  myList.appendChild(newLi);
+  newLi.classList.add("text-light");
 
   for (let y = 0; y < pets.length; y++) {
     if (z.ownerName === pets[y].ownerName && z.petName !== pets[y].petName) {
